@@ -1,0 +1,1 @@
+# Go NHL Library Code
