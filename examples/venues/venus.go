@@ -15,7 +15,7 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("GetVenues returned a status code of %d\n", statusCode)
-	fmt.Printf("Got a total of: %d venues\n", len(venues))
+	fmt.Printf("Got a total of %d venues\n", len(venues))
 
 	fmt.Println("Attempting to get venue by ID")
 	venue, statusCode, err := client.GetVenueById(5076) // Enterprise Center
