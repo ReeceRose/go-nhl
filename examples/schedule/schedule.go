@@ -15,5 +15,5 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("GetSchedule returned a status code of %d\n", statusCode)
-	fmt.Println(schedule)
+	fmt.Printf("Tonight there are %d game(s) on\n", schedule.TotalGames)
 }
