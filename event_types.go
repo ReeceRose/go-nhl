@@ -1,6 +1,8 @@
 package gonhl
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 func (c *Client) GetEventTypes() ([]EventType, int, error) {
 	var eventTypes []EventType
