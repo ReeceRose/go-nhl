@@ -27,7 +27,7 @@ func (c *Client) GetTeamById(id int) (Team, int, error) {
 
 type teamsResponse struct {
 	Copyright string `json:"copyright"`
-	Teams     []Team
+	Teams     []Team `json:"teams"`
 }
 
 type Team struct {
