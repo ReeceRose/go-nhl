@@ -18,4 +18,12 @@ func main() {
 	for _, standingType := range standingsTypes {
 		fmt.Printf("%s:%s\n", standingType.Name, standingType.Description)
 	}
+
+	fmt.Println("Attempting to get standings type by name")
+	standingsType, statusCode, err := client.GetStandingsTypeByName("postseason")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("GetStandingsTypeByName returned a status code of %d\n", statusCode)
+	fmt.Printf("Got standings type of %s\n", standingsType.Description)
 }

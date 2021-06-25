@@ -1,6 +1,9 @@
 package gonhl
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 func (c *Client) GetPlatforms() ([]Platform, int, error) {
 	var platforms []Platform
@@ -10,6 +13,19 @@ func (c *Client) GetPlatforms() ([]Platform, int, error) {
 	}
 	json.Unmarshal(data, &platforms)
 	return platforms, statusCode, nil
+}
+
+func (c *Client) GetPlatformByCode(code string) (Platform, int, error) {
+	platforms, statusCode, err := c.GetPlatforms()
+	if err != nil {
+		return Platform{}, statusCode, err
+	}
+	for _, platform := range platforms {
+		if platform.PlatformCode == code {
+			return platform, statusCode, nil
+		}
+	}
+	return Platform{}, statusCode, fmt.Errorf("cannot find platform with code of %s", code)
 }
 
 type Platform struct {

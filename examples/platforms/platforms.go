@@ -18,4 +18,12 @@ func main() {
 	for _, platform := range platforms {
 		fmt.Printf("%s:%s\n", platform.PlatformCode, platform.PlatformDescription)
 	}
+
+	fmt.Println("Attempting to get platform by code")
+	platform, statusCode, err := client.GetPlatformByCode("web")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("GetPlatformByCode returned a status code of %d\n", statusCode)
+	fmt.Printf("Got platform of %s\n", platform.PlatformCode)
 }
