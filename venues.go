@@ -25,6 +25,8 @@ func (c *Client) GetVenueById(id int) (Venue, int, error) {
 	return response.Venues[0], statusCode, nil
 }
 
+// TODO: Get venues by name
+
 type venueResponse struct {
 	Copyright string  `json:"copyright"`
 	Venues    []Venue `json:"venues"`
