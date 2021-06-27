@@ -24,12 +24,4 @@ func main() {
 	}
 	fmt.Printf("GetDivisionById returned a status code of %d\n", statusCode)
 	fmt.Printf("Got divison with the name: %v\n", division.Name)
-
-	fmt.Println("Attempting to get division by name")
-	division, statusCode, err = client.GetDivisionByName("Scotia North")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("GetDivisionByName returned a status code of %d\n", statusCode)
-	fmt.Printf("Got divison with the ID: %v\n", division.ID)
 }

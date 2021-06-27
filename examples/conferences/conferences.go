@@ -24,12 +24,4 @@ func main() {
 	}
 	fmt.Printf("GetConferenceById returned a status code of %d\n", statusCode)
 	fmt.Printf("Got conference with the name: %v\n", conference.Name)
-
-	fmt.Println("Attempting to get division by name")
-	conference, statusCode, err = client.GetConferenceByName("Western")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("GetConferenceByName returned a status code of %d\n", statusCode)
-	fmt.Printf("Got conference with the ID: %v\n", conference.ID)
 }

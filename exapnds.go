@@ -2,7 +2,6 @@ package gonhl
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 func (c *Client) GetExpands() ([]Expand, int, error) {
@@ -13,19 +12,6 @@ func (c *Client) GetExpands() ([]Expand, int, error) {
 	}
 	json.Unmarshal(data, &expands)
 	return expands, statusCode, nil
-}
-
-func (c *Client) GetExpandByName(name string) (Expand, int, error) {
-	expands, statusCode, err := c.GetExpands()
-	if err != nil {
-		return Expand{}, statusCode, err
-	}
-	for _, expand := range expands {
-		if expand.Name == name {
-			return expand, statusCode, nil
-		}
-	}
-	return Expand{}, statusCode, fmt.Errorf("cannot find expand with name of %s", name)
 }
 
 type Expand struct {

@@ -18,12 +18,4 @@ func main() {
 	for _, playType := range playTypes {
 		fmt.Printf("%s:%s:%s\n", playType.ID, playType.Name, playType.CmsKey)
 	}
-
-	fmt.Println("Attempting to get game type by ID")
-	playType, statusCode, err := client.GetPlayTypeById("SHOT")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("GetPlayTypeById returned a status code of %d\n", statusCode)
-	fmt.Printf("Got play type of %s\n", playType.Name)
 }

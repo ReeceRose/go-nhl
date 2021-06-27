@@ -20,12 +20,4 @@ func main() {
 	for _, gameStatus := range gameStatuses {
 		fmt.Printf("%s:%s:%s\n", gameStatus.Code, gameStatus.AbstractGameState, gameStatus.DetailedState)
 	}
-
-	fmt.Println("Attempting to get game status by code")
-	gameStatus, statusCode, err := client.GetGameStatusBycode("5")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("GetGameStatusBycode returned a status code of %d\n", statusCode)
-	fmt.Printf("Got game status of %s\n", gameStatus.AbstractGameState)
 }

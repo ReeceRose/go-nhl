@@ -18,12 +18,4 @@ func main() {
 	for _, event := range eventTypes {
 		fmt.Printf("%s:%s\n", event.ID, event.Description)
 	}
-
-	fmt.Println("Attempting to get event type by ID")
-	eventType, statusCode, err := client.GetEventTypeById("H")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("GetEventTypeById returned a status code of %d\n", statusCode)
-	fmt.Printf("Got event of %s\n", eventType.Description)
 }

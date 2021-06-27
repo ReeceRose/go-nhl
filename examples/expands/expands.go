@@ -18,12 +18,4 @@ func main() {
 	for _, expand := range expands {
 		fmt.Printf("%s:%s\n", expand.Name, expand.Description)
 	}
-
-	fmt.Println("Attempting to get expand by name")
-	expand, statusCode, err := client.GetExpandByName("person.currentTeam")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("GetExpandByName returned a status code of %d\n", statusCode)
-	fmt.Printf("Got expand of %s\n", expand.Description)
 }

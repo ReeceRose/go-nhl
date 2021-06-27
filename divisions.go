@@ -2,7 +2,6 @@ package gonhl
 
 import (
 	"encoding/json"
-	"fmt"
 	"strconv"
 )
 
@@ -24,19 +23,6 @@ func (c *Client) GetDivisionById(id int) (Division, int, error) {
 	}
 	json.Unmarshal(data, &response)
 	return response.Divisions[0], statusCode, nil
-}
-
-func (c *Client) GetDivisionByName(name string) (Division, int, error) {
-	divisions, statusCode, err := c.GetDivisions()
-	if err != nil {
-		return Division{}, statusCode, err
-	}
-	for _, division := range divisions {
-		if division.Name == name {
-			return division, statusCode, nil
-		}
-	}
-	return Division{}, statusCode, fmt.Errorf("cannot find division by name of %s", name)
 }
 
 type divisionsResponse struct {

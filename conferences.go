@@ -2,7 +2,6 @@ package gonhl
 
 import (
 	"encoding/json"
-	"fmt"
 	"strconv"
 )
 
@@ -24,19 +23,6 @@ func (c *Client) GetConferenceById(id int) (Conference, int, error) {
 	}
 	json.Unmarshal(data, &response)
 	return response.Conferences[0], statusCode, nil
-}
-
-func (c *Client) GetConferenceByName(name string) (Conference, int, error) {
-	conferences, statusCode, err := c.GetConferences()
-	if err != nil {
-		return Conference{}, statusCode, err
-	}
-	for _, conference := range conferences {
-		if conference.Name == name {
-			return conference, statusCode, nil
-		}
-	}
-	return Conference{}, statusCode, fmt.Errorf("cannot find conference by name of %s", name)
 }
 
 type conferencesResponse struct {

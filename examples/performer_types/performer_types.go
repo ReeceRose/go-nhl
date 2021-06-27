@@ -18,12 +18,4 @@ func main() {
 	for _, performerType := range performerTypes {
 		fmt.Printf("%s\n", performerType.Name)
 	}
-
-	fmt.Println("Attempting to get performer type by name")
-	performerType, statusCode, err := client.GetPerformerTypeByName("person")
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("GetPlatformByCode returned a status code of %d\n", statusCode)
-	fmt.Printf("Got performer type of %s\n", performerType.Name)
 }

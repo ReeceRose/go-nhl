@@ -2,7 +2,6 @@ package gonhl
 
 import (
 	"encoding/json"
-	"strconv"
 )
 
 func (c *Client) GetAwards() ([]Award, int, error) {
@@ -13,16 +12,6 @@ func (c *Client) GetAwards() ([]Award, int, error) {
 	}
 	json.Unmarshal(data, &response)
 	return response.Awards, statusCode, nil
-}
-
-func (c *Client) GetAwardById(id int) (Award, int, error) {
-	var response awardsResponse
-	data, statusCode, err := c.get(STATS_BASE_URL + "/awards/" + strconv.Itoa(id))
-	if err != nil {
-		return response.Awards[0], statusCode, err
-	}
-	json.Unmarshal(data, &response)
-	return response.Awards[0], statusCode, nil
 }
 
 type awardsResponse struct {

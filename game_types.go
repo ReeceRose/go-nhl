@@ -2,7 +2,6 @@ package gonhl
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 func (c *Client) GetGameTypes() ([]GameType, int, error) {
@@ -13,19 +12,6 @@ func (c *Client) GetGameTypes() ([]GameType, int, error) {
 	}
 	json.Unmarshal(data, &gametypes)
 	return gametypes, statusCode, nil
-}
-
-func (c *Client) GetGameTypeById(id string) (GameType, int, error) {
-	gameTypes, statusCode, err := c.GetGameTypes()
-	if err != nil {
-		return GameType{}, statusCode, err
-	}
-	for _, gameType := range gameTypes {
-		if gameType.ID == id {
-			return gameType, statusCode, nil
-		}
-	}
-	return GameType{}, statusCode, fmt.Errorf("cannot find game type by id of %s", id)
 }
 
 type GameType struct {

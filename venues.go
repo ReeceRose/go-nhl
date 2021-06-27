@@ -2,7 +2,6 @@ package gonhl
 
 import (
 	"encoding/json"
-	"strconv"
 )
 
 func (c *Client) GetVenues() ([]Venue, int, error) {
@@ -14,18 +13,6 @@ func (c *Client) GetVenues() ([]Venue, int, error) {
 	json.Unmarshal(data, &response)
 	return response.Venues, statusCode, nil
 }
-
-func (c *Client) GetVenueById(id int) (Venue, int, error) {
-	var response venueResponse
-	data, statusCode, err := c.get(STATS_BASE_URL + "/venues/" + strconv.Itoa(id))
-	if err != nil {
-		return response.Venues[0], statusCode, err
-	}
-	json.Unmarshal(data, &response)
-	return response.Venues[0], statusCode, nil
-}
-
-// TODO: Get venues by name
 
 type venueResponse struct {
 	Copyright string  `json:"copyright"`
