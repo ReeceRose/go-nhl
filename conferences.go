@@ -5,9 +5,9 @@ import (
 	"strconv"
 )
 
-func (c *Client) GetConferences() ([]Conference, int, error) {
+func (c *Client) getConferences(appendedURL string) ([]Conference, int, error) {
 	var response conferencesResponse
-	data, statusCode, err := c.get(STATS_BASE_URL + "/conferences")
+	data, statusCode, err := c.get(STATS_BASE_URL + "/conferences/" + appendedURL)
 	if err != nil {
 		return response.Conferences, statusCode, err
 	}
@@ -15,14 +15,13 @@ func (c *Client) GetConferences() ([]Conference, int, error) {
 	return response.Conferences, statusCode, nil
 }
 
+func (c *Client) GetConferences() ([]Conference, int, error) {
+	return c.getConferences("")
+}
+
 func (c *Client) GetConferenceById(id int) (Conference, int, error) {
-	var response conferencesResponse
-	data, statusCode, err := c.get(STATS_BASE_URL + "/conferences/" + strconv.Itoa(id))
-	if err != nil {
-		return response.Conferences[0], statusCode, err
-	}
-	json.Unmarshal(data, &response)
-	return response.Conferences[0], statusCode, nil
+	conferences, statusCode, err := c.getConferences(strconv.Itoa(id))
+	return conferences[0], statusCode, err
 }
 
 type conferencesResponse struct {

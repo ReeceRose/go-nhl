@@ -5,9 +5,9 @@ import (
 	"strconv"
 )
 
-func (c *Client) GetDivisions() ([]Division, int, error) {
+func (c *Client) getDivisions(appendedURL string) ([]Division, int, error) {
 	var response divisionsResponse
-	data, statusCode, err := c.get(STATS_BASE_URL + "/divisions")
+	data, statusCode, err := c.get(STATS_BASE_URL + "/divisions/" + appendedURL)
 	if err != nil {
 		return response.Divisions, statusCode, err
 	}
@@ -15,14 +15,13 @@ func (c *Client) GetDivisions() ([]Division, int, error) {
 	return response.Divisions, statusCode, nil
 }
 
+func (c *Client) GetDivisions() ([]Division, int, error) {
+	return c.getDivisions("")
+}
+
 func (c *Client) GetDivisionById(id int) (Division, int, error) {
-	var response divisionsResponse
-	data, statusCode, err := c.get(STATS_BASE_URL + "/divisions/" + strconv.Itoa(id))
-	if err != nil {
-		return response.Divisions[0], statusCode, err
-	}
-	json.Unmarshal(data, &response)
-	return response.Divisions[0], statusCode, nil
+	divisions, statusCode, err := c.getDivisions(strconv.Itoa(id))
+	return divisions[0], statusCode, err
 }
 
 type divisionsResponse struct {

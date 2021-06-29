@@ -5,6 +5,8 @@ import (
 	"strconv"
 )
 
+// TODO: Refactor to have getTeams, add extra modifiers, move roster in here?
+
 func (c *Client) GetTeams() ([]Team, int, error) {
 	var response teamsResponse
 	data, statusCode, err := c.get(STATS_BASE_URL + "/teams")
