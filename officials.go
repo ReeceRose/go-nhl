@@ -20,6 +20,7 @@ func (c *Client) GetActiveOfficials() (OfficialsResponse, int, error) {
 	return c.getOfficials("?cayenneExp=active=true")
 }
 
+// TODO: refactor
 type OfficialsResponse struct {
 	Officials []struct {
 		ID                    int         `json:"id"`
