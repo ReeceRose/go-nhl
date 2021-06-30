@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// TODO: Add extra modifiers
+
 func (c *Client) GetSchedule() (Schedule, int, error) {
 	var schedule Schedule
 	data, statusCode, err := c.get(STATS_BASE_URL + "/schedule")

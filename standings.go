@@ -29,11 +29,6 @@ func (c *Client) GetDetailedStandingsByYear(year string) (Record, int, error) {
 	return records[0], responseCode, error
 }
 
-func (c *Client) GetDetailedStandingsByYar(year string) (Record, int, error) {
-	records, responseCode, error := c.getStandings("?expand=standings.record")
-	return records[0], responseCode, error
-}
-
 type standingsReponse struct {
 	Copyright string   `json:"copyright"`
 	Records   []Record `json:"records"`
