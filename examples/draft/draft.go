@@ -16,4 +16,11 @@ func main() {
 	}
 	fmt.Printf("GetDraftByYear returned a status code of %d\n", statusCode)
 	fmt.Printf("Got the %d draft\n", draft.DraftYear)
+
+	draftPicks, statusCode, err := client.GetAllDraftPicksByTeamIdAndYear(19, "2020")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("GetAllDraftPicksByTeamIdAndYear returned a status code of %d\n", statusCode)
+	fmt.Printf("St. Louis Blues selected %d players in the 2020 draft\n", draftPicks.Total)
 }
